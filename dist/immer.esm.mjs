@@ -529,12 +529,10 @@ function T() {
 								l = i ? (u(o, n) ? "replace" : c) : "remove"
 							if (v !== p || "replace" !== l) {
 								var d = r.concat(n)
-								t.push(
-									"remove" === l ? {op: l, path: d} : {op: l, path: d, value: p}
-								),
+								t.push({op: l, path: d, value: p}),
 									e.push(
 										l === c
-											? {op: "remove", path: d}
+											? {op: "remove", path: d, value: f(v)}
 											: "remove" === l
 											? {op: c, path: d, value: f(v)}
 											: {op: "replace", path: d, value: f(v)}
@@ -566,7 +564,7 @@ function T() {
 						}
 						for (var h = u.length - 1; i.length <= h; --h) {
 							var y = r.concat([h])
-							e.push({op: "remove", path: y})
+							e.push({op: "remove", path: y, value: f(u[h])})
 						}
 					})(n, r, t, e)
 				case 3:

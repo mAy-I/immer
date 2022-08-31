@@ -1528,7 +1528,8 @@
 
 				inversePatches.push({
 					op: REMOVE,
-					path: _path2
+					path: _path2,
+					value: clonePatchValueIfNeeded(copy_[_i2])
 				})
 			}
 		} // This is used for both Map objects and normal objects.
@@ -1547,23 +1548,17 @@
 				var op = !assignedValue ? REMOVE : has(base_, key) ? REPLACE : ADD
 				if (origValue === value && op === REPLACE) return
 				var path = basePath.concat(key)
-				patches.push(
-					op === REMOVE
-						? {
-								op: op,
-								path: path
-						  }
-						: {
-								op: op,
-								path: path,
-								value: value
-						  }
-				)
+				patches.push({
+					op: op,
+					path: path,
+					value: value
+				})
 				inversePatches.push(
 					op === ADD
 						? {
 								op: REMOVE,
-								path: path
+								path: path,
+								value: clonePatchValueIfNeeded(origValue)
 						  }
 						: op === REMOVE
 						? {

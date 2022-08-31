@@ -108,7 +108,8 @@ export function enablePatches() {
 			const path = basePath.concat([i])
 			inversePatches.push({
 				op: REMOVE,
-				path
+				path,
+				value: clonePatchValueIfNeeded(copy_[i])
 			})
 		}
 	}
@@ -127,10 +128,10 @@ export function enablePatches() {
 			const op = !assignedValue ? REMOVE : has(base_, key) ? REPLACE : ADD
 			if (origValue === value && op === REPLACE) return
 			const path = basePath.concat(key as any)
-			patches.push(op === REMOVE ? {op, path} : {op, path, value})
+			patches.push({op, path, value})
 			inversePatches.push(
 				op === ADD
-					? {op: REMOVE, path}
+					? {op: REMOVE, path, value: clonePatchValueIfNeeded(origValue)}
 					: op === REMOVE
 					? {op: ADD, path, value: clonePatchValueIfNeeded(origValue)}
 					: {op: REPLACE, path, value: clonePatchValueIfNeeded(origValue)}
