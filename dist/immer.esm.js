@@ -564,7 +564,7 @@ function T() {
 						}
 						for (var h = u.length - 1; i.length <= h; --h) {
 							var y = r.concat([h])
-							e.push({op: "remove", path: y, value: f(u[h])})
+							e.push({op: "remove", path: y, value: f(i[h])})
 						}
 					})(n, r, t, e)
 				case 3:

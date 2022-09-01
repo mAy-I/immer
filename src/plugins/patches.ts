@@ -109,7 +109,7 @@ export function enablePatches() {
 			inversePatches.push({
 				op: REMOVE,
 				path,
-				value: clonePatchValueIfNeeded(copy_[i])
+				value: clonePatchValueIfNeeded(base_[i])
 			})
 		}
 	}

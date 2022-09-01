@@ -1529,7 +1529,7 @@
 				inversePatches.push({
 					op: REMOVE,
 					path: _path2,
-					value: clonePatchValueIfNeeded(copy_[_i2])
+					value: clonePatchValueIfNeeded(base_[_i2])
 				})
 			}
 		} // This is used for both Map objects and normal objects.
